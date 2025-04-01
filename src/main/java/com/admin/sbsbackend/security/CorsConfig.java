@@ -16,7 +16,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Allow all origins
-                .allowedOrigins("http://localhost:4200","http://https://super-dusk-800533.netlify.app")  // Replace with your Angular app URL
+                .allowedOrigins("http://https://super-dusk-800533.netlify.app")  // Replace with your Angular app URL
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")  // Allowed HTTP methods
                 .allowedHeaders("*")
                 .allowCredentials(true)  // Allow cookies and credentials
