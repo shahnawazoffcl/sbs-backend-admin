@@ -20,4 +20,6 @@ public interface BikeRepairService {
     List<Mechanic> getMechanics();
 
     String addMechanic(String mechanic);
+
+    Mechanic getMechanic(String mechanic);
 }

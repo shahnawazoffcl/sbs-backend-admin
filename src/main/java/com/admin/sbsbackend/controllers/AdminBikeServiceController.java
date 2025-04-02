@@ -3,6 +3,7 @@ package com.admin.sbsbackend.controllers;
 import com.admin.sbsbackend.controllers.utils.AdminUserControllerUtils;
 import com.admin.sbsbackend.controllers.utils.BikeRepairControllerUtils;
 import com.admin.sbsbackend.dtos.BikeRepairResponseDTO;
+import com.admin.sbsbackend.dtos.MechanicAssignDTO;
 import com.admin.sbsbackend.models.BikeRepair;
 import com.admin.sbsbackend.models.Mechanic;
 import com.admin.sbsbackend.services.AdminUserService;
@@ -48,16 +49,18 @@ public class AdminBikeServiceController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<BikeRepairResponseDTO> updateService(@RequestBody BikeRepair bikeRepair, @RequestHeader("token") String token) {
+    public ResponseEntity<BikeRepairResponseDTO> updateService(@RequestBody MechanicAssignDTO updateDTO, @RequestHeader("token") String token) {
         adminUserControllerUtils.validateUser(token);
+        BikeRepair bikeRepair = bikeRepairServiceService.getServiceById(updateDTO.getId());
+        BikeRepairControllerUtils.createBikeRepair(bikeRepair,updateDTO);
         BikeRepair updatedBikeRepair = bikeRepairServiceService.updateService(bikeRepair);
         return ResponseEntity.ok(BikeRepairControllerUtils.mapToBikeRepairResponseDTO(updatedBikeRepair));
     }
 
     @GetMapping("/mechanics")
-    public ResponseEntity<List<String>> getMechanics(@RequestHeader("token") String token) {
+    public ResponseEntity<List<Mechanic>> getMechanics(@RequestHeader("token") String token) {
         adminUserControllerUtils.validateUser(token);
-        return ResponseEntity.ok(BikeRepairControllerUtils.getMechanics(bikeRepairServiceService.getMechanics()));
+        return ResponseEntity.ok(bikeRepairServiceService.getMechanics());
     }
 
     @PostMapping("/mechanics")

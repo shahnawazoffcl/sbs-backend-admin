@@ -1,12 +1,12 @@
 package com.admin.sbsbackend.dtos;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BikeRepairResponseDTO {
+public class MechanicAssignDTO {
+    private String mechanic;
     private String id;
     private String name;
     private String bikeModel;
@@ -15,5 +15,4 @@ public class BikeRepairResponseDTO {
     private String address;
     private String preferredTime;
     private String serviceStatus;
-    private String mechanic;
 }

@@ -67,4 +67,9 @@ public class BikeRepairServiceImpl implements BikeRepairService {
 
         return "added";
     }
+
+    @Override
+    public Mechanic getMechanic(String mechanic) {
+        return this.mechRepo.findMechanicById(UUID.fromString(mechanic));
+    }
 }

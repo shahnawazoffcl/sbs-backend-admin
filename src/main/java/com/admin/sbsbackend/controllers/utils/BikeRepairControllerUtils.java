@@ -1,6 +1,7 @@
 package com.admin.sbsbackend.controllers.utils;
 
 import com.admin.sbsbackend.dtos.BikeRepairResponseDTO;
+import com.admin.sbsbackend.dtos.MechanicAssignDTO;
 import com.admin.sbsbackend.models.BikeRepair;
 import com.admin.sbsbackend.models.Mechanic;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ public class BikeRepairControllerUtils {
         bikeRepairResponseDTO.setPreferredTime(bikeRepair.getPreferredTime());
         bikeRepairResponseDTO.setServiceType(bikeRepair.getServiceType());
         bikeRepairResponseDTO.setServiceStatus(bikeRepair.getServiceStatus());
+        bikeRepairResponseDTO.setMechanic(bikeRepair.getMechanic());
         return bikeRepairResponseDTO;
     }
 
@@ -32,4 +34,14 @@ public class BikeRepairControllerUtils {
         return mechanicNames;
     }
 
+    public static void createBikeRepair(BikeRepair bikeRepair,MechanicAssignDTO updateDTO) {
+        bikeRepair.setBikeModel(updateDTO.getBikeModel());
+        bikeRepair.setAddress(updateDTO.getAddress());
+        bikeRepair.setName(updateDTO.getName());
+        bikeRepair.setContactNo(updateDTO.getContactNo());
+        bikeRepair.setPreferredTime(updateDTO.getPreferredTime());
+        bikeRepair.setServiceType(updateDTO.getServiceType());
+        bikeRepair.setServiceStatus(updateDTO.getServiceStatus());
+        bikeRepair.setMechanic(updateDTO.getMechanic());
+    }
 }

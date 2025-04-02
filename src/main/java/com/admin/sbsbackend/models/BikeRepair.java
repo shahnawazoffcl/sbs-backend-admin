@@ -1,6 +1,7 @@
 package com.admin.sbsbackend.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import lombok.Getter;
@@ -20,11 +21,10 @@ public class BikeRepair extends BaseModel implements Serializable {
     private String address;
     private String preferredTime;
     private String serviceStatus;
-    @OneToOne
-    private Mechanic mechanic;
+    private String mechanic;
     private Date createdDate;
     private String createdBy;
-    @OneToOne
+    @ManyToOne
     private User updatedBy;
 
     @PrePersist
